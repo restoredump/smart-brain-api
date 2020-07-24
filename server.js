@@ -11,22 +11,12 @@ const image = require('./controllers/image');
 
 const db =  knex({
   client: 'pg',
-  connection: {
-    connectionString: process.env.DATABASE_URL,
-    ssl: {
-      rejectUnauthorized: false
-    }
-  }
+  connectionString: process.env.DATABASE_URL,
+  rejectUnauthorized: false
 });
-
-db.connect();
 
 const app = express();
 
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    next();
-});
 app.use(cors())
 app.use(bodyParser.json());
 
