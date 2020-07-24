@@ -11,6 +11,7 @@ const profile = require('./controllers/profile');
 const image = require('./controllers/image');
 
 const db =  knex({
+  client: Client,
   connection: {
     connectionString: process.env.DATABASE_URL,
     ssl: {
