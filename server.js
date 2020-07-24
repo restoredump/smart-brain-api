@@ -19,12 +19,14 @@ const db =  knex({
   }
 });
 
+db.connect();
+
 const app = express();
 
 app.use(cors())
 app.use(bodyParser.json());
 
-app.get('/', (req, res)=> { res.send('it is bitch work') })
+app.get('/', (req, res)=> { res.send('it is work') })
 app.post('/signin', (req, res) => { signin.hangleSignin(req, res, db, bcrypt) })
 app.post('/register', (req, res) => { register.handleRegister(req, res, db, bcrypt) })
 app.get('/profile/:id', (req, res) => { profile.handleProfileGet(req, res, db)})
